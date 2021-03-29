@@ -46,11 +46,6 @@ Create Property
                     </div>
 
                     <div class="form-group">
-                        <label for="property_size">{{ __('Size')}}</label>
-                        <input type="text" class="form-control" id="property_size" name="property_size" placeholder="Enter the size of the property" autocomplete="off"/>
-                    </div>
-
-                    <div class="form-group">
                         <label for="property_address">{{ __('Address')}}</label>
                         <input type="text" class="form-control" id="property_address" name="property_address" placeholder="Enter the area of the property" autocomplete="off"/>
                     </div>
@@ -58,6 +53,16 @@ Create Property
                     <div class="form-group">
                         <label for="property_coordinate">{{__('Property Coordinate')}} </label>
                         <input type="text" class="form-control" id="property_coordinate" name="property_coordinate" placeholder="Enter Property Coordonnance" autocomplete="off"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="property_price">{{ __('Price')}}</label>
+                        <input type="amount" class="form-control" id="property_price" name="property_price" placeholder="Enter the price of the property" autocomplete="off"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="property_size">{{ __('Size')}}</label>
+                        <input type="text" class="form-control" id="property_size" name="property_size" placeholder="Enter the size of the property" autocomplete="off"/>
                     </div>
 
                     <div class="form-group">

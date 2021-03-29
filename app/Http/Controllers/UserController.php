@@ -23,18 +23,6 @@ class UserController extends Controller
     {
         return view('user.user');
     }
-
-    public function client()
-    {
-        $users = User::all();
-        return view('user.client', compact('users'));
-    }
-
-    public function clientUpdate()
-    {
-        $users = User::all();
-        return view('user.client', compact('users'));
-    }
     
     public function info()
     {
@@ -298,20 +286,5 @@ class UserController extends Controller
     }
 
     // public function myClient(Plot $plots) 
-    public function myClient() 
-    {
-        // $client = User::where('id', $id)->first();
-        // $plots = Plot::where('id', $id)->first();
-        // $client = User::all();
-        // $plots = Plot::all();
-        // return view('user.myclient', compact('client', 'plots'));
-
-        $users = User::all();
-
-        $plot = Plot::all();
-
-        return view('user.myclient', compact('users', 'plot'));
-        // return view('user.myclient', compact('users'));
-        
-    }
+    
 }

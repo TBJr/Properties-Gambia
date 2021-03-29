@@ -26,6 +26,7 @@ class Properties extends Model
         'property_name',
         'property_address',
         'property_coordinate',
+        'property_price',
         'property_size',
         'property_imgs',
         'descripton',

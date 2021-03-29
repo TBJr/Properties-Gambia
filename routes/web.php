@@ -115,8 +115,8 @@ Route::get('/Edit/order/{order}', 'OrdersController@edit')->name('orders.edit');
 Route::get('/search', [UserController::class, 'index']);
 
 // The Client Part
-Route::get('/clients', 'UserController@client')->name('user.client');
-Route::get('/client/info', 'UserController@info')->name('user.info');
-Route::get('/client', 'UserController@myClient')->name('user.myclient');
-Route::get('/client/{id}', 'UserController@myClient')->name('user.myclient');
-Route::get('/client/{client}', 'UserController@client'); 
+Route::get('/clients', 'ClientController@client')->name('user.client');
+// Route::get('/client/info', 'ClientController@info')->name('user.info');
+// Route::get('/client', 'ClientController@myClient')->name('user.myclient');
+// Route::get('/client/{id}', 'ClientController@myClient')->name('user.myclient');
+// Route::get('/client/{client}', 'ClientController@client'); 

@@ -30,6 +30,11 @@ class PlotController extends Controller
         $this->middleware('auth');
         $this->plot = $plot;
     }
+    
+    public function alkalo()
+    {
+        return view();
+    }
 
     public function index()
     {

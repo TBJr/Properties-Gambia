@@ -66,6 +66,7 @@ class PropertiesController extends Controller
             'property_name' => 'required',
             'property_address' => 'required | min:4',
             'property_coordinate' => 'required',
+            'property_price' => 'required',
             'property_size' => 'required',
             'property_imgs' => 'required',
             'property_imgs.*' => 'required|image|max:5080',
@@ -96,6 +97,7 @@ class PropertiesController extends Controller
             $properties->property_name = $request->property_name;
             $properties->property_address = $request->property_address;
             $properties->property_coordinate = $request->property_coordinate;
+            $properties->property_price = $request->property_price;
             $properties->property_size = $request->property_size;
             $properties->property_imgs = json_encode($Imgdata);
             $properties->description = $request->description;
