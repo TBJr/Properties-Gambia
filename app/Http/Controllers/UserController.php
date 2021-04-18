@@ -21,20 +21,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.user');
+        return view('admin.user.user');
     }
     
     public function info()
     {
-        return view('user.info');
+        return view('admin.user.info');
     }
 
     public function profile(){
-        return view('profile.profile');
+        return view('admin.profile.profile');
     }
 
     public function photo(){
-        return view('profile.photo');
+        return view('admin.profile.photo');
     }
 
     public function getNotifications(){
@@ -120,7 +120,7 @@ class UserController extends Controller
     }
 
     public function getPassword(){
-        return view('passwords.change');
+        return view('admin.passwords.change');
     }
 
     public function postPassword(Request $request){
@@ -196,7 +196,7 @@ class UserController extends Controller
         //
         $user->load('plots');
 
-        return redirect()->route('user.client');
+        return redirect()->route('admin.user.client');
     }
 
     /**
@@ -231,7 +231,7 @@ class UserController extends Controller
         $user->phone =  $request->phone;
         $user->update();
 
-        return redirect()->route('user.profile')->with('success', 'Profile Updated');
+        return redirect()->route('admin.user.profile')->with('success', 'Profile Updated');
 
     }
     public function update(Request $request, $id)

@@ -37,7 +37,7 @@ class PropertiesController extends Controller
         $plots = Plot::all();
         $properties = Properties::with('users', 'plots')->get();
 
-        return view('properties.index', compact('properties', 'plots'));
+        return view('admin.properties.index', compact('properties', 'plots'));
     }
 
     /**

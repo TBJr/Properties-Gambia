@@ -137,7 +137,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('user.client') }}" class="nav-link">
+                                    <a href="{{ route('clients.index') }}" class="nav-link">
                                         <i class="nav-icon fas fa-users"></i>
                                         <p>
                                             Clients
@@ -655,7 +655,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('user.myclient') }}" class="nav-link">
+                                    <a href="{{ route('clients.myClient') }}" class="nav-link">
                                         <i class="nav-icon fas fa-users"></i>
                                         <p>
                                             My Assets

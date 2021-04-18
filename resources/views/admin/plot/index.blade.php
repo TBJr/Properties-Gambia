@@ -27,6 +27,7 @@ Plots
               <th>Plot Address</th>
               <th>Plot No</th>
               <th>Plot Coordinate</th>
+              <th class="text text-center">Plot Owner</th>
               <th class="text text-center">Plot Size</th>
               <th class="text text-center">Plot Status</th>
               <th class="text text-center">Action</th>
@@ -43,6 +44,13 @@ Plots
                 <td>{{$land->plot_address}}</td>
                 <td>{{$land->plot_number}}</td>
                 <td>{{$land->plot_coordinate}}</td>
+                <td class="text-center">
+                  @foreach($users as $client)
+                    @if($land->users_id == $client->id)
+                      {{ $client->fname }} {{ $client->mname }} {{ $client->lname }}
+                    @endif
+                  @endforeach
+                </td>
                 <td class="text text-center">{{$land->plot_size}}</td>
                 @if($land->status == 'available')
                   <td class="text text-center"><span class="badge badge-success">{{$land->status}}</span></td>
@@ -53,13 +61,14 @@ Plots
                   <a href="{{ route('plot.view', [$land->id]) }}" title="View">
                     <button class="btn-sm btn btn-info" alt="View"><i class="fas fa-eye"></i> View</button>
                   </a>
-                  <a href="#" title="EDIT">
+                  {{-- <a href="#" title="EDIT"> --}}
+                  <a href="{{ route('plot.edit', $land->id) }}" title="EDIT">
                     <button class="btn btn-warning btn-sm active" alt="edit"><i class="fas fa-edit"></i> Edit</button>
                   </a>
-                  <a href="#" title="ASSIGN">
+                  <a href="{{ route('plot.update', [$land->id]) }}" title="ASSIGN">
                     <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-eye"></i> ASSIGN</button>
                   </a>
-                  <!-- Modal -->
+                  <!-- start: Assign Modal -->
                   <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -77,18 +86,20 @@ Plots
                             
                             <div class="row">
                               <div class="col-12 col-sm-6">
-                                <h3 class="d-inline-block d-sm-none">Test}</h3>
+                                <h3 class="d-inline-block d-sm-none">{{$land->name}} Test</h3>
+                                {{-- Testing {{$land[0]->plot_name}} --}}
                               </div>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">CANCEL</button>
-                              <button type="button" class="btn btn-success">SAVE</button>
+                              {{-- <button type="button" class="btn btn-danger" data-dismiss="modal">CANCEL</button> --}}
+                              {{-- <button type="button" class="btn btn-success">SAVE</button> --}}
                             </div>
                           </form>
                         </div>
                       </div>
                     </div>
                   </div>
+                  {{-- end: Assign Modal --}}
                 </td>
               </tr>
             @endforeach
@@ -139,7 +150,7 @@ Plots
                   <td class="text text-center"><span class="badge badge-danger">{{$land->status}}</span></td>
               @endif
               <td class="text text-center">
-                <a href="{{ route('plot.view') }}" title="View">
+                <a href="{{ route('plot.view', [$land->id]) }}" title="View">
                   <button class="btn-sm btn btn-info" alt="View"><i class="fas fa-eye"></i> View</button>
                 </a>
               </td>

@@ -31,6 +31,7 @@ class Plot extends Model
         'plot_number',
         'plot_coordinate',
         'plot_size',
+        'plot_price',
         'status',
         'process',
         'active',

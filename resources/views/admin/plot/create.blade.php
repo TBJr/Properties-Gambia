@@ -43,7 +43,7 @@ PLOT CREATE
 
                     <div class="form-group">
                         <label for="plot_price">{{ __('Plot Price')}}</label>
-                        <input type="price" class="form-control" id="plot_price" name="plot_price" placeholder="Enter the plot number" autocomplete="off"/>
+                        <input type="price" class="form-control" id="plot_price" name="plot_price" placeholder="Enter the plot price" autocomplete="off"/>
                     </div>
 
                     <div class="form-group">

@@ -30,11 +30,6 @@ class PlotController extends Controller
         $this->middleware('auth');
         $this->plot = $plot;
     }
-    
-    public function alkalo()
-    {
-        return view();
-    }
 
     public function index()
     {
@@ -45,8 +40,10 @@ class PlotController extends Controller
         //     ->with('i', (request()->input('page', 1) - 1) * 5);
 
         $plot = Plot::all();
+        // $plot = Plot::with('users')->get();
         $users = User::all();
-        return view('plot.index', compact('plot', 'users'));
+        return view('admin.plot.index', compact('plot', 'users'));
+        // return view('admin.plot.index', compact('plot'));
     }
 
     /**
@@ -60,7 +57,7 @@ class PlotController extends Controller
         $properties = Properties::all();
         $plot = Plot::all();
 
-        return view('plot.create', compact('properties', 'plot'));
+        return view('admin.plot.create', compact('properties', 'plot'));
     }
 
     /**
@@ -74,14 +71,15 @@ class PlotController extends Controller
 
         $this->validate($request, [
             'plot_name' => 'required',
-            'plot_address' => 'required | min:4',
+            'plot_price' => 'required',
             'properties_id' => 'required',
-            'plot_coordinate' => 'required',
+            'plot_address' => 'required | min:4',
             'plot_number' => 'required',
-            'status' => 'required',
+            'plot_coordinate' => 'required',
             'plot_size' => 'required',
             'plot_imgs' => 'required',
             'plot_imgs.*' => 'required|image|max:5084',
+            'status' => 'required',
         ]);
 
         if($request->hasfile('plot_imgs'))
@@ -110,6 +108,7 @@ class PlotController extends Controller
             $plot->plot_coordinate = $request->plot_coordinate;
             $plot->status = $request->status;
             $plot->plot_size = $request->plot_size;
+            $plot->plot_price = $request->plot_price;
             $plot->plot_number = $request->plot_number;
             $plot->plot_imgs = json_encode($Imgdata);
             
@@ -130,7 +129,7 @@ class PlotController extends Controller
     public function show(Plot $plot)
     {
         //
-        return view('plot.show', compact('plot'));
+        return view('admin.plot.show', compact('plot'));
     }
 
     /**
@@ -142,7 +141,11 @@ class PlotController extends Controller
     public function edit(Plot $plot)
     {
         //
-        return view('plot.edit', compact('plot'));
+        // $users = User::all();
+        $users = User::where(['role' => 'client'])->get();
+        $properties = Properties::all();
+
+        return view('admin.plot.edit', compact('plot', 'users', 'properties'));
     }
 
     /**
@@ -168,7 +171,7 @@ class PlotController extends Controller
         $plot->update($request->all());
 
         return redirect()->route('plot.index')
-            ->with('success', 'Product updated successfully');
+            ->with('success', 'Plot updated successfully');
     }
 
     /**
@@ -205,7 +208,7 @@ class PlotController extends Controller
         $plot = Plot::where('id', $id)->get();
         $properties = Properties::with('users', 'plots')->get();
         
-        return view('plot.view', compact('properties', 'plot'));
+        return view('admin.plot.view', compact('properties', 'plot'));
     }
 
     public function search($search){
@@ -218,6 +221,15 @@ class PlotController extends Controller
         return response()->json([
             'plots' => $plot,
         ]);
+    }
+
+    public function change($id)
+    {
+        $plot = Plot::where('id', $id)->get();
+        $properties = Properties::with('users', 'plots')->get();
+
+        return redirect()->route('plot.index', compact('plot', 'properties'))
+            ->with('success', 'Product updated successfully');
     }
 
 }

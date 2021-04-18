@@ -17,15 +17,16 @@ use App\Http\Controllers\PlotController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 
 Auth::routes();
 // Auth::routes(['register' => false]);
 
 Route::get('/notifications', function () {
-    return view('pages.notifications');
+    return view('admin.pages.notifications');
 })->name('notifications');
 
 Route::get('/user/mark-all-read/', function(){
@@ -53,9 +54,9 @@ Route::get('/user', 'UserController@index')->name('user.index');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/password/change', 'UserController@getPassword')->name('password.change');
+Route::get('/admin/password/change', 'UserController@getPassword')->name('password.change');
 
-Route::post('/password/change', 'UserController@postPassword')->name('password.change');
+Route::post('/admin/password/change', 'UserController@postPassword')->name('password.change');
 
 
 
@@ -90,12 +91,13 @@ Route::post('/uploadProfilePhoto', 'UserController@UploadImage');
 Route::resource('properties', 'PropertiesController');
 // Route::resource('properties', PropertiesController::class);
 // Route::get('/properties/{properties}', 'ProperpertiesController@show')->name('properties.show');
-Route::get('/properties/view', 'PropertiesController@view')->name('properties.view');
+Route::get('/admin/properties/view', 'PropertiesController@view')->name('properties.view');
 
 // Plot
 Route::resource('plot', 'PlotController');
 Route::get('/view', 'PlotController@view')->name('plot.view');
 Route::get('/view/{id}', 'PlotController@view')->name('plot.view');
+Route::get('/plot/{plot}', 'PlotController@change')->name('plot.change');
 // Route::get('/plot/seePlot/{id}', 'PlotController@seePlot')->name('plot.seePlot');
 Route::get('/plot/search/{search}', 'PlotController@search');
 
@@ -104,9 +106,9 @@ Route::resource('orders', 'OrdersController');
 Route::delete('orders/destroy', 'OrdersController@massDestroy')->name('orders.massDestroy');
 Route::get('/consent', 'OrdersController@consent')->name('orders.consent');
 // Route::get('/manage', 'OrdersApiController@manage')->name('orders.edit');
-Route::get('/Add/order', 'OrdersController@create')->name('orders.create');
-Route::get('/myorders', 'OrdersController@myOrders')->name('orders.myorders');
-Route::get('/myorders/{id}', 'OrdersController@approve')->name('orders.approve');
+Route::get('/admin/Add/order', 'OrdersController@create')->name('orders.create');
+Route::get('/admin/myorders', 'OrdersController@myOrders')->name('orders.myorders');
+Route::get('/admin/myorders/{id}', 'OrdersController@approve')->name('orders.approve');
 Route::get('/orders/reject/{id}', 'OrdersController@reject')->name('orders.reject');
 Route::get('/orders/delivered/{id}', 'OrdersController@delivered')->name('orders.delivered');
 Route::get('/orders/ready/{id}', 'OrdersController@ready')->name('orders.ready');
@@ -115,8 +117,18 @@ Route::get('/Edit/order/{order}', 'OrdersController@edit')->name('orders.edit');
 Route::get('/search', [UserController::class, 'index']);
 
 // The Client Part
-Route::get('/clients', 'ClientController@client')->name('user.client');
-// Route::get('/client/info', 'ClientController@info')->name('user.info');
-// Route::get('/client', 'ClientController@myClient')->name('user.myclient');
-// Route::get('/client/{id}', 'ClientController@myClient')->name('user.myclient');
-// Route::get('/client/{client}', 'ClientController@client'); 
+Route::get('/clients', 'ClientController@client')->name('clients.index');
+Route::get('/client/{id}', 'ClientController@view')->name('clients.view');
+Route::get('/client', 'ClientController@myClient')->name('clients.myClient');
+Route::get('/client/site-visit/{id}', 'ClientController@siteVisit')->name('clients.siteVisit');
+Route::get('/client/alkalo/{id}', 'ClientController@alkalo')->name('clients.alkalo');
+Route::get('/client/sketch-plan/{id}', 'ClientController@sketchPlan')->name('clients.sketchPlan');
+Route::get('/client/physical-plan/{id}', 'ClientController@physicalPlan')->name('clients.physicalPlan');
+Route::get('/client/area-council/{id}', 'ClientController@areaCouncil')->name('clients.areaCouncil');
+Route::get('/client/chief-approval/{id}', 'ClientController@chiefApproval')->name('clients.chiefApproval');
+Route::get('/client/capital-gains/{id}', 'ClientController@capitalGains')->name('clients.capitalGains');
+Route::get('/client/dhl-pickup/{id}', 'ClientController@dhlPickup')->name('clients.dhlPickup');
+
+// Contact Us Route
+Route::get('contact-us', 'ContactUSController@contactUS');
+Route::post('contact-us', ['as'=>'contactus.store', 'uses'=>'ContactUsController@contactSaveData']);

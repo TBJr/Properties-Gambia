@@ -27,8 +27,8 @@ class CreatePlotsTable extends Migration
             $table->string('plot_price');
             $table->enum('status', ['sold', 'available', 'reserved']);
             $table->enum('process', ['initiated', 'pending', 'completed'])->nullable();
-            $table->integer('active')->nullable();
-            $table->enum('stage', ['alkalo', 'sketch_plan', 'physical_plan', 'areal_council', 'chief_approval', 'capital_gains', 'DHL/Client_pickup']);
+            $table->integer('active')->default(0);
+            $table->enum('stage', ['alkalo', 'sketch_plan', 'physical_plan', 'areal_council', 'chief_approval', 'capital_gains', 'DHL/Client_pickup'])->nullable();
             $table->json('plot_imgs');
             $table->timestamps();
         });
