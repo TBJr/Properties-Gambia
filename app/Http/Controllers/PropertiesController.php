@@ -50,7 +50,7 @@ class PropertiesController extends Controller
         // 
         $properties = Properties::all();
 
-        return view('properties.create', compact('properties'));
+        return view('admin.properties.create', compact('properties'));
     }
 
     /**
@@ -69,7 +69,7 @@ class PropertiesController extends Controller
             'property_price' => 'required',
             'property_size' => 'required',
             'property_imgs' => 'required',
-            'property_imgs.*' => 'required|image|max:5080',
+            'property_imgs.*' => 'required|image',
             'description' => 'required',
         ]);
 
@@ -116,7 +116,7 @@ class PropertiesController extends Controller
     public function show(Properties $properties)
     {
         $properties = Properties::all();
-        return view('properties.view', compact('properties'));
+        return view('admin.properties.view', compact('properties'));
     }
 
     /**
@@ -127,7 +127,7 @@ class PropertiesController extends Controller
      */
     public function edit(Properties $properties)
     {
-        return view('properties.edit', compact('properties'));
+        return view('admin.properties.edit', compact('properties'));
     }
 
     /**

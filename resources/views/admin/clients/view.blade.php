@@ -11,7 +11,12 @@ Clients Details
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img style="width: 200px;" class="profile-user-img img-fluid img-circle" src="{{ asset('assets/profile/') .'/'. $client[0]->photo }}" alt="{{ $client[0]->fname . ' Photo' }}">
+                            @if ($client[0]->photo == 'avatar.png')
+                                <img src="{{ asset('assets/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
+                                @else
+                                <img src="{{ asset('assets/profile/') .'/'. $client[0]->photo }}" class="profile-user-img img-fluid img-circle" alt="User Image">
+                            @endif
+                            {{-- <img style="width: 200px;" class="profile-user-img img-fluid img-circle" src="{{ asset('assets/profile/') .'/'. $client[0]->photo }}" alt="{{ $client[0]->fname . ' Photo' }}"> --}}
                         </div>
 
                         <h2 class="profile-username text-center" style="text-transform: uppercase">

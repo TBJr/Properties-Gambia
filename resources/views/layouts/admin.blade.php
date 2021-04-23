@@ -78,7 +78,7 @@
                         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                             <div class="image">
                                 @if (auth()->user()->photo == 'avatar.png')
-                                    <img src="{{ asset('assets/img/avatar.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                                    <img src="{{ asset('assets/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
                                     @else
                                     <img src="{{ asset('assets/profile/') .'/'. auth()->user()->photo }}" class="img-circle elevation-2" alt="User Image">
                                 @endif
@@ -320,7 +320,7 @@
                         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                             <div class="image">
                                 @if (auth()->user()->photo == 'avatar.png')
-                                    <img src="{{ asset('assets/img/avatar.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                                    <img src="{{ asset('assets/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
                                     @else
                                     <img src="{{ asset('assets/profile/') .'/'. auth()->user()->photo }}" class="img-circle elevation-2" alt="User Image">
                                 @endif
@@ -341,8 +341,7 @@
                                     </div>
                             </div>
                         </div>
-
-                        {{-- @if(auth()) --}}
+                        
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                 <li class="nav-item">
@@ -380,7 +379,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('user.client') }}" class="nav-link">
+                                    <a href="{{ route('clients.index') }}" class="nav-link">
                                         <i class="nav-icon fas fa-users"></i>
                                         <p>
                                             Clients
@@ -388,64 +387,7 @@
                                     </a>
                                 </li>
 
-                                {{-- @role('Super-Admin') --}}
-                                    {{-- @if(auth()->user()->hasPermissionTo('edit user')) --}}
-                                    <li class="nav-item has-treeview">
-                                        {{-- <a href="#" class="nav-link active"> --}}
-                                        <a href="#" class="nav-link">
-                                            <i class="nav-icon fas fa-cogs"></i>
-                                            <p>
-                                                Management
-                                                <i class="right fas fa-angle-left"></i>
-                                            </p>
-                                        </a>
-                                        <ul class="nav nav-treeview">
-                                            <li class="nav-item">
-                                                <a href="{{ route('role.index') }}" class="nav-link">
-                                                    <i class="fas fa-bomb nav-icon"></i>
-                                                    <p>Roles</p>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="{{ route('permission.index') }}" class="nav-link">
-                                                    <i class="fas fa-bomb nav-icon"></i>
-                                                    <p>Permissions</p>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="{{ route('user.index') }}" class="nav-link">
-                                                    <i class="fas fa-users-cog nav-icon"></i>
-                                                    <p>Users</p>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    {{-- @else --}}
-                                        {{-- @if(auth()->user()->hasrole('Admin')) --}}
-                                            <li class="nav-item has-treeview">
-                                                    <a href="#" class="nav-link">
-                                                        <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                                                        <p>
-                                                            Client
-                                                            <i class="right fas fa-angle-left"></i>
-                                                        </p>
-                                                    </a>
-                                                </li>
-
-                                                <ul class="nav nav-treeview">
-                                                    <li class="nav-item">
-                                                        {{-- <a href="{{ route('user.info') }}" class="nav-link"> --}}
-                                                            <i class="fas fa-users-cog nav-icon"></i>
-                                                            <p>Users</p>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        {{-- @endif --}}
-                                {{-- @endrole --}}
-
-                            
-
+                                
                                 <li class="nav-header">PERSONAL</li>
 
                                 <li class="nav-item">
@@ -471,7 +413,7 @@
                                     </a>
                                 </li>                    
             
-                                {{-- <li class="nav-header">MISCELLANEOUS</li> --}}
+                                <li class="nav-header">MISCELLANEOUS</li>
 
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('logout') }}"

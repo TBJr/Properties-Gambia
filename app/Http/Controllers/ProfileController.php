@@ -70,9 +70,12 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
         $this->validate($request, [
-            'name' => 'required',
+            'fname' => 'required',
+            'mname' => 'required',
+            'lname' => 'required',
             'phone' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
+            'gender' => 'required',
         ]);
 
         $user->update($request->all());

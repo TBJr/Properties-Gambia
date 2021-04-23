@@ -54,7 +54,7 @@ export default {
     data(){
         return{
             dis: false,
-            imgplaceholder6:'assets/img/avatar.jpg',
+            imgplaceholder6:'assets/img/avatar.png',
             form: new Form({
                 icon: ''
 
@@ -68,7 +68,7 @@ export default {
             let options = {
                 type: 'base64',
                 size: { width: w, height: h },
-                format: 'jpg'
+                format: 'png'
             };
             this.$refs.croppieRef2.result(options, output => {
                 this.imgplaceholder6 = output;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{config('app.name')}}</title>
+    <title> Properties Gambia </title>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link href="css/styles.css" type="text/css" rel="Stylesheet" />
@@ -190,12 +190,39 @@
         </div>
     </section>
 
-    <section id="the-best">
+    {{-- <section id="the-best">
         <div class="flex container">
-            {{-- <img src="https://onclickwebdesign.com/wp-content/uploads/property_1.jpg" alt="Property 1" /> --}}
+            <img src="https://onclickwebdesign.com/wp-content/uploads/property_1.jpg" alt="Property 1" />
             <img src="images/pexels-david-mcbee-1546168.jpg" alt="Property 1" />
             <div>
                 <h2>We Are One of The Best Real Estate Company</h2>
+                <p class="large-paragraph">Properties Gambia Real Estate is a new company in The Gambia, we opened in 2020. 
+                <br>
+                    Our aim is to give the best service to our customers, from the dispora and from THe Gambia. We don't only sell lands,
+                    we like to have a one to one with our clients and making sure we meet there needs, from picking you up from the Airport
+                    in The Gambia to providing you a rental property. <br>
+                    We will also provide you a top class building service for your homes, with provinding the best materals and builders. When
+                    you buy from us we will also join you to our company's whatsapp group, where you will meet and talk to your neighbour's who have
+                    invested with us. That why we our different from the rest, where in the world do you talk to your neighbours before you have
+                    started to build your community. <br>
+                    I Daniel Yusuf Samba (CEO), of Properties Gambia Real Estate. I am constantly striving to deliver a service that is unparalleled by
+                    are competitors. But also working together, and developing Africa at the same time. 
+                    You are safe with us. <br>
+
+                    Samba’s mission is to is to help the diaspora and Gambians purchase land, buy properties, and build homes. As Co-Director 
+                    of Investment in The Gambia Samba’s goal is offer services to the diaspora and local local Gambians to build their future with solid housing, and 
+                    to help Gambia move forward.
+                </p> <br>
+                
+                <button class="rounded">Learn More</button>
+            </div>
+        </div>
+    </section> --}}
+
+    <section id="the-best">
+        <div class="container">
+            <h2>We Are One of The Best Real Estate Company</h2>
+                <div class="flex">
                 <p class="large-paragraph">Properties Gambia Real Estate is a new company in The Gambia, we opened in 2020. 
                 <br>
                     Our aim is to give the best service to our customers, from the dispora and from THe Gambia. We don't only sell lands,

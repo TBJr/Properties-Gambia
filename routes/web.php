@@ -38,7 +38,7 @@ Route::get('/admin/auth/notifications', 'UserController@getNotifications');
 
 Route::resource('profile', 'ProfileController');
 
-Route::group(['middleware' => ['role:Super-Admin|Admin']], function () {
+Route::group(['middleware' => ['role:Super-Admin|Admin|CEO']], function () {
 
     Route::resource('permission', 'PermissionController');
 
@@ -89,8 +89,6 @@ Route::post('/uploadProfilePhoto', 'UserController@UploadImage');
 
 // Properties
 Route::resource('properties', 'PropertiesController');
-// Route::resource('properties', PropertiesController::class);
-// Route::get('/properties/{properties}', 'ProperpertiesController@show')->name('properties.show');
 Route::get('/admin/properties/view', 'PropertiesController@view')->name('properties.view');
 
 // Plot
@@ -98,7 +96,6 @@ Route::resource('plot', 'PlotController');
 Route::get('/view', 'PlotController@view')->name('plot.view');
 Route::get('/view/{id}', 'PlotController@view')->name('plot.view');
 Route::get('/plot/{plot}', 'PlotController@change')->name('plot.change');
-// Route::get('/plot/seePlot/{id}', 'PlotController@seePlot')->name('plot.seePlot');
 Route::get('/plot/search/{search}', 'PlotController@search');
 
 // Orders

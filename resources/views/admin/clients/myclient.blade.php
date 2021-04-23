@@ -14,8 +14,6 @@ Clients Details
           <div class="card-body box-profile">
               <div class="text-center">
                 <img style="width: 200px;" class="profile-user-img img-fluid img-circle" src="{{ asset('assets/profile/') .'/'. auth()->user()->photo }}" alt="{{ auth()->user()->fname . ' Photo' }}">
-              
-
               </div>
 
               <h3 class="profile-username text-center" style="text-transform: uppercase">{{ auth()->user()->fname }} {{ auth()->user()->mname }} {{ auth()->user()->lname }}</h3>
@@ -232,8 +230,8 @@ Clients Details
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                    @if (auth()->user()->photo == 'avatar.jpg')
-                        <img style="width: 200px;" class="profile-user-img img-fluid img-circle" src="{{ asset('assets/img/avatar.jpg') }}" alt="{{ auth()->user()->fname . ' Photo' }}">
+                    @if (auth()->user()->photo == 'avatar.png')
+                        <img style="width: 200px;" class="profile-user-img img-fluid img-circle" src="{{ asset('assets/img/avatar.png') }}" alt="{{ auth()->user()->fname . ' Photo' }}">
                     @else
                         <img style="width: 200px;" class="profile-user-img img-fluid img-circle" src="{{ asset('assets/profile/') .'/'. auth()->user()->photo }}" alt="{{ auth()->user()->fname . ' Photo' }}">
                     @endif

@@ -53,7 +53,6 @@ class RegisterController extends Controller
             'fname' => ['required', 'string', 'max:255'],
             'mname' => ['required', 'string'],
             'lname' => ['required', 'string', 'max:255'],
-            'name'  => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone' => ['required'],
@@ -68,24 +67,9 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
-    {
-        return User::create([
-            'fname' => $data['fname'],
-            'mname' => $data['mname'],
-            'lname' => $data['lname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'gender' => $data['gender'],
-            'role' => $data['role'],
-            'phone' => $data['phone'],
-            'name' => $data['name'],
-        ]);
-    }
-
     // protected function create(array $data)
     // {
-    //     $user =  User::create([
+    //     return User::create([
     //         'fname' => $data['fname'],
     //         'mname' => $data['mname'],
     //         'lname' => $data['lname'],
@@ -94,9 +78,24 @@ class RegisterController extends Controller
     //         'gender' => $data['gender'],
     //         'role' => $data['role'],
     //         'phone' => $data['phone'],
+    //         'name' => $data['name'],
     //     ]);
-    //
-    //       $user->assignRole('client'); //assign role to user
-    //       return $user;    
     // }
+
+    protected function create(array $data)
+    {
+        $user =  User::create([
+            'fname' => $data['fname'],
+            'mname' => $data['mname'],
+            'lname' => $data['lname'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'gender' => $data['gender'],
+            'role' => $data['role'],
+            'phone' => $data['phone'],
+        ]);
+    
+          $user->assignRole('client'); //assign role to user
+          return $user;    
+    }
 }

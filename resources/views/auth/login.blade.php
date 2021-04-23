@@ -73,9 +73,9 @@ LOGIN
 
                 <div class="form-group">
                     <div class="row">
-                        <input id="name" type="text" name="name" value="{{ old('fname') }} {{ old('mname') }} {{ old('lname') }}" hidden>
+                        {{-- <input id="name" type="text" name="name" value="{{ old('fname') }} {{ old('mname') }} {{ old('lname') }}" hidden> --}}
                         <div class="col-sm">
-                            <input id="fname" type="text" class="form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" placeholder="First Name" required autocomplete="fname" autofocus>
+                            <input id="fname" type="name" class="form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" placeholder="First Name" required autocomplete="fname" autofocus>
 
                             @error('fname')
                                 <span class="invalid-feedback" role="alert">
@@ -156,9 +156,7 @@ LOGIN
 
                 <div class="form-group">
                     <select name="role" class="form-control" id="role">
-                        <option value=""> Select Your Role </option>
-                        <option value="{{ __('client') }}">Client</option>
-                        <option value="{{ __('admin') }}">Admin</option>
+                        <option value="{{ __('client') }}"> Client </option>
                     </select>
                 </div>
 
