@@ -16,7 +16,8 @@ class ContactUsController extends Controller
      */
     public function contactUS()
     {
-        return view('admin.pages.contact-us');
+        // return view('admin.pages.contact-us');
+        return view('welcome');
     }
 
     /**

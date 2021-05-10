@@ -28,10 +28,10 @@
                 </div>
             </div><!-- /.card-header -->
             <div class="card-body table-responsive p-0">
-                <table class="table">
+                <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                        <th>#</th>
+                        <th>ID No.</th>
                         <th>Full Name</th>
                         <th>User Type</th>
                         <th>Email</th>
@@ -46,7 +46,12 @@
                             <td>{{ user.roles[0].name }}</td>
                             <td>{{ user.email  }}</td>
                             <td>
-                                <button class="btn btn-sm btn-info" @click="view(user)"> <i class="fa fa-eye"></i> View</button>
+                                <button class="btn btn-sm btn-default">
+                                    <a :href="'/client/' + user.id">
+                                        <i class="fa fa-eye"></i> View</a>
+                                </button>
+                                |
+                                <button class="btn btn-sm btn-danger" @click="deletes(user.id)"> <i class="fa fa-trash"></i> Disable </button>
                             </td>
                             <td>{{ user.created_at |timeAgo }}</td>
 

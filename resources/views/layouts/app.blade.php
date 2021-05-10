@@ -18,13 +18,54 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/approval.css') }}" rel="stylesheet">
+    
+    <style>
+        body {
+            /* Location of the image */
+            background-image: url(images/house.jpg);
+            
+            /* Image is centered vertically and horizontally at all times */
+            background-position: center center;
+            
+            /* Image doesn't repeat */
+            background-repeat: no-repeat;
+            
+            /* Makes the image fixed in the viewport so that it doesn't move when 
+                the content height is greater than the image height */
+            background-attachment: fixed;
+            
+            /* This is what makes the background image rescale based on its container's size */
+            background-size: cover;
+            
+            /* Pick a solid background color that will be displayed while the background image is loading */
+            background-color:#464646;
+            
+            /* SHORTHAND CSS NOTATION
+            * background: url(background-photo.jpg) center center cover no-repeat fixed;
+            */
+        }
+
+        /* For mobile devices */
+        @media only screen and (max-width: 767px) {
+            body {
+                /* The file size of this background image is 93% smaller
+                * to improve page load speed on mobile internet connections */
+                background-image: url(images/house.jpg);
+            }
+        }
+    </style>
+   
+    
 </head>
+
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-transparent ">
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm"> --}}
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" style="color: black" href="{{ url('/') }}">
+                    {{ _('Properties Gambia') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -50,31 +91,30 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </li>
                         @endguest
                     </ul>
                 </div>
+                </b>
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                @include('partials/alert')
+                <br><br><br>
+                @yield('content')
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -21,6 +21,15 @@ Change Password
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="password"> Current Password</label>
+                                    <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror"  required placeholder="Old Password">
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
 
                                 <div class="form-group">
                                     <label for="newpassword">Enter New Password</label>
@@ -33,7 +42,7 @@ Change Password
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="newpassword_confirmation">Enter New Password</label>
+                                    <label for="newpassword_confirmation">Confirm New Password</label>
                                     <input type="password" name="newpassword_confirmation"  id="newpassword_confirmation" class="form-control @error('newpassword_confirmation') is-invalid @enderror" value="" required placeholder="Confirm Password">
                                     @error('newpassword_confirmation')
                                         <span class="invalid-feedback" role="alert">
@@ -45,7 +54,6 @@ Change Password
                             <div class="col-12">
                                 <div class="form-group button">
                                     <button type="submit" class="btn btn-primary"><i class="fas fa-lock"></i> Change Password</button>
-                                    {{--  <a role="button" href="admin/index.html" class="bizwheel-btn theme-2">Login</a>  --}}
                                 </div>
                             </div>
                         </div>

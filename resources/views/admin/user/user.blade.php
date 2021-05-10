@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    <user></user>
+    <userinfo></userinfo>
 @endsection

@@ -11,7 +11,6 @@ body{
     overflow-y: hidden;
 }
 
-
 a{
   text-decoration:none;
   color:#444444;
@@ -38,7 +37,6 @@ a{
     z-index:0;
     box-shadow: 0 0 15px 9px #00000096;
 }
-
 .login-reg-panel input[type="radio"]{
     position:relative;
     display:none;
@@ -239,3 +237,4 @@ transition: .3s ease all;
 
 .pass_show .ptxt:hover{color: #333333;} 
 /* end: show password */
+

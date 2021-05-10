@@ -34,16 +34,9 @@ class PlotController extends Controller
     public function index()
     {
         //
-        // $plot = Plot::latest()->paginate(5);
-
-        // return view('plot.index', compact('plot'))
-        //     ->with('i', (request()->input('page', 1) - 1) * 5);
-
-        $plot = Plot::all();
-        // $plot = Plot::with('users')->get();
+        $plot = Plot::latest()->paginate(10);
         $users = User::all();
         return view('admin.plot.index', compact('plot', 'users'));
-        // return view('admin.plot.index', compact('plot'));
     }
 
     /**
@@ -231,5 +224,16 @@ class PlotController extends Controller
         return redirect()->route('plot.index', compact('plot', 'properties'))
             ->with('success', 'Product updated successfully');
     }
+
+    // public function assign(Request $request, Plot $plot)
+    // {
+    //     $request->validate([
+    //         'users_id' => 'required',
+    //     ]);
+    //     $plot->update($request->all());
+
+    //     return redirect()->route('plot.index')
+    //         ->with('success', 'Plot updated successfully');
+    // }
 
 }

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('pageName')
-Clients Details
+Client Details
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@ Clients Details
                     <div class="card-body box-profile">
                         <div class="text-center">
                             @if ($client[0]->photo == 'avatar.png')
-                                <img src="{{ asset('assets/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
+                                <img src="{{ asset('assets/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image" style="width: 180px;">
                                 @else
                                 <img src="{{ asset('assets/profile/') .'/'. $client[0]->photo }}" class="profile-user-img img-fluid img-circle" alt="User Image">
                             @endif
@@ -81,7 +81,7 @@ Clients Details
                                 <td>
                                     <div class="text-center">
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".edit-stages"><i class="fas fa-eye"></i> EDIT</button>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl"><i class="fas fa-eye"></i> DETAILS</button>
+                                        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl"><i class="fas fa-eye"></i> DETAILS</button> --}}
                                     </div>
                                     
                                     <!-- start: EDIT Modal -->

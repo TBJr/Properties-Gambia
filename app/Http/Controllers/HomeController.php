@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Properties;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,5 +24,14 @@ class HomeController extends Controller
     public function index()
     {
         return view('admin.home');
+    }
+
+    /**
+     * Request for approval for new users
+     * 
+     */
+    public function approval()
+    {
+        return view('approval');
     }
 }

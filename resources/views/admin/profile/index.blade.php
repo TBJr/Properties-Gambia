@@ -121,10 +121,6 @@ Profile
                                                     </span>
                                                 @enderror
                                             </div>
-            $table->string('country')->nullable();
-            $table->string('city')->nullable();
-            $table->string('address')->nullable();
-            $table->string('address2')->nullable();
                                         </div>
                                         {{-- <div class="col-12">
                                             <div class="form-group">

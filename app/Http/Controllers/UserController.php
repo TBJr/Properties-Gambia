@@ -21,7 +21,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.user');
+        $users = User::whereNull('approved_at')->get();
+
+        return view('admin.user.user', compact('users'));
     }
     
     public function info()
@@ -285,6 +287,12 @@ class UserController extends Controller
         //
     }
 
-    // public function myClient(Plot $plots) 
-    
+    public function approve($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        $user->update(['approved_at' => now()]);
+
+        return redirect()->route('admin.users.index')->withMessage('User has been approved successfully');
+    }
+
 }

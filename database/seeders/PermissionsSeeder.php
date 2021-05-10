@@ -36,7 +36,7 @@ class PermissionsSeeder extends Seeder
         $role1->givePermissionTo('Update Profile');
         $role1->givePermissionTo('View Profile');
 
-        $role2 = Role::create(['name' => 'Admin']);
+        $role2 = Role::create(['name' => 'Secretary']);
         $role2->givePermissionTo('Update Profile');
         $role2->givePermissionTo('Update Client Info');
         $role2->givePermissionTo('Create Property');
@@ -46,7 +46,7 @@ class PermissionsSeeder extends Seeder
         $role2->givePermissionTo('Delete Profile');
         $role2->givePermissionTo('View Profile');
 
-        $role3 = Role::create(['name' => 'CEO']);
+        $role3 = Role::create(['name' => 'Admin']);
         $role3->givePermissionTo('Update Profile');
         $role3->givePermissionTo('Update Client Info');
         $role3->givePermissionTo('Create Property');
@@ -56,7 +56,17 @@ class PermissionsSeeder extends Seeder
         $role3->givePermissionTo('Delete Profile');
         $role3->givePermissionTo('View Profile');
 
-        $role4 = Role::create(['name' => 'Super-Admin']);
+        $role4 = Role::create(['name' => 'CEO']);
+        $role4->givePermissionTo('Update Profile');
+        $role4->givePermissionTo('Update Client Info');
+        $role4->givePermissionTo('Create Property');
+        $role4->givePermissionTo('Update Properties');
+        $role4->givePermissionTo('Assign Properties');
+        $role4->givePermissionTo('Delete Properties');
+        $role4->givePermissionTo('Delete Profile');
+        $role4->givePermissionTo('View Profile');
+
+        $role5 = Role::create(['name' => 'Developer']);
         // Gets all permissions via Gate::before rule; See AuthServiceProvider
 
         // Create Demo Users
@@ -67,11 +77,12 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Brown',
             'email' => 'tjaybrowne@gmail.com',
             'gender' => 'male',
-            'role' => 'super-admin',
-            'profession' => 'Developer',
+            'role' => 'Developer',
+            'profession' => 'I.T Software Developer',
             'phone' => '+1 (201) 590-7351',
+            'approved_at' => now(),
         ]);
-        $user->assignRole($role4);
+        $user->assignRole($role5);
 
         $user = \App\Models\User::factory()->create([
             'name' => '',
@@ -80,22 +91,24 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Samba',
             'email' => 'daniel.samba@propertiesgambia.co.uk',
             'gender' => 'male',
-            'role' => 'super-admin',
-            'profession' => 'CEO',
+            'role' => 'CEO',
+            'profession' => 'Constructions',
+            'approved_at' => now(),
         ]);
-        $user->assignRole($role3);
+        $user->assignRole($role4);
 
         $user = \App\Models\User::factory()->create([
             'name' => '',
-            'fname' => 'Jibril',
+            'fname' => 'Gibril',
             'mname' => 'D.K',
             'lname' => 'Bah',
-            'email' => 'jibril.bah@propertiesgambia.co.uk',
+            'email' => 'gibril.bah@propertiesgambia.co.uk',
             'gender' => 'male',
-            'role' => 'admin',
+            'role' => 'Admin',
             'profession' => 'Office Manager',
+            'approved_at' => now(),
         ]);
-        $user->assignRole($role2);
+        $user->assignRole($role3);
 
         $user = \App\Models\User::factory()->create([
             'name' => '',
@@ -104,8 +117,22 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Jobe',
             'email' => 'jobeomar100@gmail.com',
             'gender' => 'male',
-            'role' => 'admin',
+            'role' => 'Admin',
             'profession' => 'Office Land Assistant',
+            'approved_at' => now(),
+        ]);
+        $user->assignRole($role3);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => '',
+            'fname' => 'Kanny',
+            'mname' => '',
+            'lname' => 'khan',
+            'email' => 'kanny.khan@email.com',
+            'gender' => 'male',
+            'role' => 'Secretary',
+            'profession' => 'Office Assistant',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role2);
 
@@ -116,9 +143,11 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Jallow',
             'email' => 'cherno.jallow@propertiesgambia.co.uk',
             'gender' => 'male',
-            'role' => 'admin',
+            'role' => 'Admin',
+            'profession' => 'Land Manager',
+            'approved_at' => now(),
         ]);
-        $user->assignRole($role2);
+        $user->assignRole($role3);
 
         $user = \App\Models\User::factory()->create([
             'name' => '',
@@ -127,7 +156,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Riley',
             'email' => 'noir1229@hotmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -138,7 +168,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Graham',
             'email' => 'lotit@sky.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -149,7 +180,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Fleming',
             'email' => 'shirlf01@hotmail.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -158,9 +190,10 @@ class PermissionsSeeder extends Seeder
             'fname' => 'Tyra',
             'mname' => '',
             'lname' => 'West',
-            'email' => 'tyrawest@gmail.com',
+            'email' => 'tyraawest@gmail.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -171,7 +204,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Roach',
             'email' => 'antroyroach@gmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -182,7 +216,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Shakespeare',
             'email' => 'mvshakes@yahoo.co.uk',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -193,7 +228,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Matthews',
             'email' => 'everton.matthers1@gmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -204,8 +240,9 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Harding',
             'email' => 'perfectionist.painting@yahoo.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
             'phone' => '+1 (732) 299-0437',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -216,7 +253,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Gordon',
             'email' => 'andreae.gordon@yahoo.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -227,7 +265,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Fisher',
             'email' => 'gwendolynfisher@me.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -238,7 +277,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Kindred',
             'email' => 'yolandthomas@yahoo.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -249,7 +289,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Powell',
             'email' => 'Sharonpowell926@gmail.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -260,7 +301,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Jobe',
             'email' => 'ebrima.jobe@gmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -271,7 +313,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Adj-Omania',
             'email' => 'MsJacqueO@gmail.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -282,7 +325,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Abe',
             'email' => 'therapomad@yahoo.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -293,7 +337,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Everett',
             'email' => 'eulaleee@yahoo.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -304,7 +349,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Richards',
             'email' => 'kieronandsteph@yahoo.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -315,7 +361,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Vidal',
             'email' => 'd.vidal@live.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -326,7 +373,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Milner',
             'email' => 'alan_m99@yahoo.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -337,7 +385,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Milner',
             'email' => 'teruah888@gmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -348,7 +397,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Green',
             'email' => 'raymondgreen2@gmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -359,7 +409,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Payne',
             'email' => 'rpmssunshine168@gmail.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -370,7 +421,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Blake',
             'email' => 'smblake@blueyonder.co.uk',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -381,7 +433,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Walker',
             'email' => 'investinyourwealth@gmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -392,7 +445,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Audain',
             'email' => 'dionneworks@gmail.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -403,7 +457,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Nisbett',
             'email' => 'Cnjnisbett@yahoo.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -414,7 +469,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Josephs',
             'email' => 'josephsdj71@gmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -425,7 +481,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Gordon',
             'email' => 'Sharongordon11@gmail.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -436,7 +493,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Payne',
             'email' => 'derekdrpayne444@yahoo.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -447,7 +505,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Harris',
             'email' => 'Rakaicari@gmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -458,7 +517,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Payne',
             'email' => 'Spayne197@yahoo.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -469,7 +529,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Josephs',
             'email' => 'angellinababe@hotmail.com',
             'gender' => 'female',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -480,7 +541,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Anderson',
             'email' => 'Njeriuhuru50@gmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -491,7 +553,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Thomas',
             'email' => 'Bhane724@gmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -502,7 +565,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Gilbert',
             'email' => 'Kay_gilbert@hotmail.co.uk',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -513,7 +577,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Edwards',
             'email' => 'keleedwards@gmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -524,7 +589,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Currie',
             'email' => 'charlescurrie1@hotmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -535,7 +601,8 @@ class PermissionsSeeder extends Seeder
             'lname' => 'Holmes',
             'email' => 'marhol281@outlook.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
 
@@ -544,9 +611,118 @@ class PermissionsSeeder extends Seeder
             'fname' => 'Patrick',
             'mname' => 'Lloyd',
             'lname' => 'McPherson',
-            'email' => 'carib70@ hotmail.com',
+            'email' => 'carib70@hotmail.com',
             'gender' => 'male',
-            'role' => 'client',
+            'role' => 'Client',
+            'approved_at' => now(),
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => '',
+            'fname' => 'Erik',
+            'mname' => 'A.',
+            'lname' => 'Neal',
+            'email' => 'erikneal68@gmail.com',
+            'gender' => 'male',
+            'role' => 'Client',
+            'approved_at' => now(),
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => '',
+            'fname' => 'Marjernell',
+            'mname' => '',
+            'lname' => 'Hickman',
+            'email' => 'nellhickman11@yahoo.com',
+            'gender' => 'female',
+            'role' => 'Client',
+            'approved_at' => now(),
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => '',
+            'fname' => 'Gwendolyn',
+            'mname' => 'M.',
+            'lname' => 'Hannans',
+            'email' => 'pghannans@yahoo.com',
+            'gender' => 'male',
+            'role' => 'Client',
+            'approved_at' => now(),
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => '',
+            'fname' => 'Serge',
+            'mname' => '',
+            'lname' => 'Cadet',
+            'email' => 'serge_cadet@aol.com',
+            'gender' => 'male',
+            'role' => 'Client',
+            'approved_at' => now(),
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => '',
+            'fname' => 'Carla',
+            'mname' => '',
+            'lname' => 'Morrison',
+            'email' => 'businesswomen1@aol.com',
+            'gender' => 'female',
+            'role' => 'Client',
+            'approved_at' => now(),
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => '',
+            'fname' => 'Charmaine',
+            'mname' => 'P.',
+            'lname' => 'Allwood',
+            'email' => 'charmsrootsboutiques@gmail.com',
+            'gender' => 'female',
+            'role' => 'Client',
+            'approved_at' => now(),
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => '',
+            'fname' => 'Mona',
+            'mname' => '',
+            'lname' => 'Merchant',
+            'email' => 'sassey_777@yahoo.com',
+            'gender' => 'female',
+            'role' => 'Client',
+            'approved_at' => now(),
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => '',
+            'fname' => 'Jeanie',
+            'mname' => '',
+            'lname' => 'Garrick',
+            'email' => 'jn_garrick@yahoo.com',
+            'gender' => 'female',
+            'role' => 'Client',
+            'approved_at' => now(),
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => '',
+            'fname' => 'Kemie',
+            'mname' => '',
+            'lname' => 'Smith',
+            'email' => 'kemie.smith@gmail.com',
+            'gender' => 'female',
+            'role' => 'Client',
+            'approved_at' => now(),
         ]);
         $user->assignRole($role1);
     }

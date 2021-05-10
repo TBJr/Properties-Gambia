@@ -38,6 +38,24 @@ Route::get('/admin/auth/notifications', 'UserController@getNotifications');
 
 Route::resource('profile', 'ProfileController');
 
+// Route for deleted users
+
+
+// Approval for new Users
+
+Route::middleware(['auth', 'active_user'])->group(function () {
+    Route::get('/approval', 'HomeController@approval')->name('approval');
+
+    Route::middleware(['approved'])->group(function () {
+        Route::get('/home', 'HomeController@index')->name('home');
+    });
+
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/users', 'UserController@index')->name('admin.users.index');
+        Route::get('/users/{user_id}/approve', 'UserController@approve')->name('admin.users.approve');
+    });
+});
+
 Route::group(['middleware' => ['role:Super-Admin|Admin|CEO']], function () {
 
     Route::resource('permission', 'PermissionController');
@@ -51,7 +69,7 @@ Route::group(['middleware' => ['role:Super-Admin|Admin|CEO']], function () {
 Route::get('/user', 'UserController@index')->name('user.index');
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('/admin/password/change', 'UserController@getPassword')->name('password.change');
@@ -89,7 +107,8 @@ Route::post('/uploadProfilePhoto', 'UserController@UploadImage');
 
 // Properties
 Route::resource('properties', 'PropertiesController');
-Route::get('/admin/properties/view', 'PropertiesController@view')->name('properties.view');
+Route::get('properties/view', 'PropertiesController@view')->name('properties.view');
+Route::get('properties/{properties}', 'PropertiesController@show')->name('properties.views');
 
 // Plot
 Route::resource('plot', 'PlotController');
@@ -115,6 +134,7 @@ Route::get('/search', [UserController::class, 'index']);
 
 // The Client Part
 Route::get('/clients', 'ClientController@client')->name('clients.index');
+Route::get('client/create', 'ClientController@create')->name('clients.create');
 Route::get('/client/{id}', 'ClientController@view')->name('clients.view');
 Route::get('/client', 'ClientController@myClient')->name('clients.myClient');
 Route::get('/client/site-visit/{id}', 'ClientController@siteVisit')->name('clients.siteVisit');
@@ -125,6 +145,8 @@ Route::get('/client/area-council/{id}', 'ClientController@areaCouncil')->name('c
 Route::get('/client/chief-approval/{id}', 'ClientController@chiefApproval')->name('clients.chiefApproval');
 Route::get('/client/capital-gains/{id}', 'ClientController@capitalGains')->name('clients.capitalGains');
 Route::get('/client/dhl-pickup/{id}', 'ClientController@dhlPickup')->name('clients.dhlPickup');
+Route::get('/getStates/{id}','ClientController@getStates');
+Route::get('/getCities/{id}','ClientController@getCities');
 
 // Contact Us Route
 Route::get('contact-us', 'ContactUSController@contactUS');

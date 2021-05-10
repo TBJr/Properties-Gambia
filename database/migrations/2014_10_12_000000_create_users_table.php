@@ -16,10 +16,11 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->ipAddress('client')->nullable();
+            $table->string('name')->nullable();
             $table->string('fname');
             $table->string('mname');
             $table->string('lname');
-            $table->string('name')->nullable();
+            $table->boolean('admin')->default(false);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -31,10 +32,13 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('address')->nullable();
             $table->string('address2')->nullable();
-            $table->enum('role', ['super-admin', 'admin', 'client']);
+            $table->enum('role', ['Developer', 'CEO', 'Admin', 'Secretary', 'Client']);
+            $table->timestamp('blocked_at')->nullable();
+            // $table->integer('active')->default(1);
             $table->rememberToken();
             $table->timestamps();
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
+            $table->timestamp('approved_at')->nullable();
         });
     }
 

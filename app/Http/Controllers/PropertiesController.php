@@ -116,6 +116,7 @@ class PropertiesController extends Controller
     public function show(Properties $properties)
     {
         $properties = Properties::all();
+
         return view('admin.properties.view', compact('properties'));
     }
 
@@ -165,12 +166,12 @@ class PropertiesController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
     }
 
-    // public function view()
-    // {
-    //     $plots = Plot::all();
-    //     $properties = Properties::with('users', 'plots')->get();
-    //     // $properties = Properties::all();
+    public function view()
+    {
+        $plots = Plot::all();
+        // $properties = Properties::with('users', 'plots')->get();
+        $properties = Properties::all();
         
-    //     return view('properties.view', compact('properties', 'plots'));
-    // }
+        return view('admin.properties.view', compact('properties', 'plots'));
+    }
 }

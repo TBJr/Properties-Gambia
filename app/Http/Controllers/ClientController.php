@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyPlotRequest;
 use App\Http\Requests\StorePlotRequest;
 use App\Http\Requests\UpdatePlotRequest;
-use App\Models\Properties;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\State;
 use App\Models\User;
 use App\Models\Plot;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +18,8 @@ class ClientController extends Controller
 {
     public function client()
     {
-        $users = User::all();
+        // $users = User::paginate(15);
+        $users = User::where(['role' => 'client'])->paginate(10);
         $plots = Plot::all();
         return view('admin.clients.index', compact('users', 'plots'));
     }
@@ -88,6 +91,61 @@ class ClientController extends Controller
         $plots = Plot::where('id', $id)->first();
         $plots->update(['stage' => 'DHL/Client_pickup']);
         return back()->with('success', 'The PICKUP process has been completed!');
+    }
+
+    public function create()
+    {
+        $client = User::all();
+        $countries = Country::all()->pluck('country_name','id');
+
+        return view('admin.clients.create', compact('client', 'countries'));
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'fname' => 'required',
+            'mname' => 'required',
+            'lname' => 'required',
+            'role' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8|max:15|alpha_num',
+            'phone' => 'required',
+            'gender' => 'required',
+            'profession' => 'required',
+            'country' => 'required',
+        ]);
+
+        $client = new User;
+            $client->fname = $request->fname;
+            $client->mname = $request->mname;
+            $client->lname = $request->lname;
+            $client->email =  $request->email;
+            $client->phone =  $request->phone;
+            $client->role = $request->role;
+            $client->profession = $request->profession;
+            $client->country = $request->country;
+            $client->password = bcrypt($request->password);
+            $client->assignRole('client'); //assign role to user
+
+            $client->save();
+
+        return "ok";
+    }
+
+    // public function getStates($id){
+    // 	$states= State::where('country_id',$id)->pluck('state_name','id');
+    //     return json_encode($states);
+    // }
+
+    // public function getCities($id){
+    // 	$cities= City::where('state_id',$id)->pluck('city_name','id');
+    //     return json_encode($cities);
+    // }
+
+    public function getCities($id){
+    	$states= City::where('country_id',$id)->pluck('city_name','id');
+        return json_encode($states);
     }
 
 }
