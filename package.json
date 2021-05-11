@@ -30,7 +30,7 @@
         "moment": "^2.29.1",
         "numeral": "^2.0.6",
         "select2": "^4.1.0-rc.0",
-        "sweetalert2": "^10.3.7",
+        "sweetalert2": "^10.16.4",
         "vform": "^1.0.1",
         "vue-croppie": "^2.0.2",
         "vue-progressbar": "^0.7.5",
