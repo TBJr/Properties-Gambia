@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title><?php echo e(config('app.client_company_name')); ?></title>
+        <meta name="description" content="Properties Gambia: Helping you procure, invest, and build properties in The Gambia.">
+        <meta property="og:title" content="Properties Gambia" />
+        <meta property="og:description" content="Buy and build your dream property in The Gambia." />
+        <meta property="og:image" content="<?php echo e(asset('images/home.jpg')); ?>" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css"/>
         <link href="<?php echo e(asset('css/frontend.css')); ?>" type="text/css" rel="Stylesheet" />
@@ -24,7 +28,7 @@
                         <img src="<?php echo e(asset('logoo.ico')); ?>" width="50" alt="PGRE" class="d-inline-block align-middle mr-2"> &nbsp; PROPERTIES GAMBIA
                     </a>
                     <nav>
-                        <button id="nav-toggle" class="hamburger-menu">
+                        <button id="nav-toggle" class="hamburger-menu" aria-label="Toggle navigation menu">
                             <span class="strip"></span>
                             <span class="strip"></span>
                             <span class="strip"></span>
@@ -33,24 +37,26 @@
                         <ul id="nav-menu">
                             <li><a href="<?php echo e(route('root')); ?>" class="active">Home</a></li>
                             <li><a href="#properties">Properties</a></li>
-                            <li><a href="#">The Team</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Reviews</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="#agents">The Team</a></li>
+                            <li><a href="#the-best">About</a></li>
+                            <li><a href="#testimonials">Reviews</a></li>
+                             <li><a href="#faq">FAQ</a></li>
+                            <li><a href="#contact">Contact</a></li>
                             <?php if(Route::has('login')): ?>
                                 <li>
                                     <div class="top-right links">
                                         <?php if(auth()->guard()->check()): ?>
                                             <a href="<?php echo e(url('/index')); ?>">Dashboard</a>
                                         <?php else: ?>
-                                            <a href="<?php echo e(route('login')); ?>">Login</a>
-                                            
+                                            <a href="<?php echo e(route('login')); ?>" aria-label="Login to your account">Login</a> |
+                                             <?php if(Route::has('register')): ?>
+                                                <a href="<?php echo e(route('register')); ?>" aria-label="Register for an account">Register</a>
+                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </div>
                                 </li>
-                                <li id="close-flyout"><span class="fas fa-times"></span></li>
                             <?php endif; ?>
+                            <li id="close-flyout"><span class="fas fa-times"></span></li>
                         </ul>
                     </nav>
                 </div>
@@ -96,6 +102,7 @@
             </div>
         </section>
 
+        <!--
         <section id="properties">
             <div class="container">
                 <h2>Properties</h2>
@@ -170,67 +177,60 @@
                 <button class="rounded">View All Property Listings</button>
             </div>
         </section>
+        -->
 
         <section id="agents">
             <div class="container">
                 <h2>The Team</h2>
-                <p class="large-paragraph">Meet the team.</p>
+                <p class="large-paragraph">Meet the Team</p>
 
                 <div class="flex">
                     <div class="card">
-                        <img src="https://onclickwebdesign.com/wp-content/uploads/person_1.jpg" alt="Realtor 1" />
-                        <h3>Kaiara Spencer</h3>
-                        <p>Real Estate Agent</p>
+                        <img src="<?php echo e(asset('images/daniel-new1.jpeg')); ?>" alt="Daniel Samba - C.E.O" />
+                        <h3>Daniel Samba</h3>
+                        <p>C.E.O</p>
                     </div>
 
                     <div class="card">
-                        <img src="https://onclickwebdesign.com/wp-content/uploads/person_2.jpg" alt="Realtor 1" />
-                        <h3>Dave Simpson</h3>
-                        <p>Real Estate Agent</p>
+                        <img src="<?php echo e(asset('images/cherno-1.jpg')); ?>" alt="Cherno Jallow" />
+                        <h3>Cherno Jallow</h3>
+                        <p>Land Manager</p>
                     </div>
 
                     <div class="card">
-                        <img src="https://onclickwebdesign.com/wp-content/uploads/person_3.jpg" alt="Realtor 1" />
-                        <h3>Ben Thompson</h3>
-                        <p>Real Estate Agent</p>
+                        <img src="<?php echo e(asset('images/Gibril 1.jpeg')); ?>" alt="Gibril Bah" />
+                        <h3>Gibril Bah</h3>
+                        <p>Office Manager</p>
                     </div>
 
                     <div class="card">
-                        <img src="https://onclickwebdesign.com/wp-content/uploads/person_4.jpg" alt="Realtor 1" />
-                        <h3>Kyla Stewart</h3>
-                        <p>Real Estate Agent</p>
+                        <img src="<?php echo e(asset('images/omar_01.jpeg')); ?>" alt="Omar Jobe" />
+                        <h3>Omar Jobe</h3>
+                        <p>Office Land Assistant</p>
                     </div>
 
                     <div class="card">
-                        <img src="https://onclickwebdesign.com/wp-content/uploads/person_5.jpg" alt="Realtor 1" />
-                        <h3>Rich Moffatt</h3>
-                        <p>Real Estate Agent</p>
-                    </div>
-
-                    <div class="card">
-                        <img src="https://onclickwebdesign.com/wp-content/uploads/person_6.jpg" alt="Realtor 1" />
-                        <h3>Stuart Redman</h3>
-                        <p>Real Estate Agent</p>
+                        <img src="<?php echo e(asset('images/kanny.JPG')); ?>" alt="Kanny Khan" />
+                        <h3>Kanny Khan</h3>
+                        <p>Secretary</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="the-best">
-            <div class="flex container">
-                <img src="https://onclickwebdesign.com/wp-content/uploads/property_1.jpg" alt="Property 1" />
-                <div>
-                    <h2>We Are the Best Real Estate Company</h2>
-                    <p class="large-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <p>Est qui eos quasi ratione nostrum excepturi id recusandae fugit omnis ullam pariatur itaque nisi voluptas impedit Quo suscipit omnis iste velit maxime.</p>
-                    <ul>
-                        <li>Placeat maxime animi minus</li>
-                        <li>Placeat maxime animi minus</li>
-                        <li>Placeat maxime animi minus</li>
-                        <li>Placeat maxime animi minus</li>
-                        <li>Placeat maxime animi minus</li>
-                    </ul>
-                    <button class="rounded">Learn More</button>
+            <div class="container">
+                <h2>We Are One of The Best Real Estate Company</h2>
+                <div class="flex">
+                    <p class="large-paragraph">Properties Gambia is a new company in The Gambiap, we opened in 2020.
+                        <br>
+                        We aim to give the best service to our customers, from the diaspora, and The Gambia. We don't only sell lands, we like to have a one-to-one with our clients and making sure we meet their needs,
+                        from picking you up from the Airport in The Gambia to providing you a rental property. We will also provide you a top-class building service for your homes, providing the best materials and
+                        builders. When you buy from us we will also join you to our company's WhatsApp group, where you will meet and talk to your neighbors who have invested with us. That's why we are different from
+                        the rest, where in the world do you talk to your neighbors before you have started to build your community. I, Daniel Yusuf Samba (CEO), of Properties Gambia. I am constantly striving to deliver
+                        a service that is unparalleled by our competitors. But also working together, and developing Africa at the same time. You are safe with us.
+                        The mission is to help the diaspora and Gambians purchase land, buy properties, build homes, and help the Gambia move forward.
+                    </p>
                 </div>
             </div>
         </section>
@@ -242,54 +242,34 @@
                     <div>
                         <div class="fas fa-home"></div>
                         <div class="services-card-right">
-                            <h3>Search Property</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                            <a href="#">Learn More</a>
+                            <h3>Land Procurement</h3>
+                            <p>Are you interested in buying land in The Gambia? Let us help you! Our team of professionals are reliable and work on your behalf to ensure all land trust documents are approved and signed. We work with trusted people to ensure all owners paper work is valid. Professional associates walk you through the entire process to put your mind at ease to know your investment is secure.</p>
+                            
                         </div>
                     </div>
-
                     <div>
-                        <div class="fas fa-dollar-sign"></div>
+                        <div class="fas fa-route"></div>
                         <div class="services-card-right">
-                            <h3>Buy Property</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                            <a href="#">Learn More</a>
+                            <h3>Land Tours</h3>
+                            <p>If you are in The Gambia we can arrange a land tour for you to view land plots for sale in different areas of the country, this will allow you to see the land plots up close and personal. Our experts will guide you as you begin the process of purchasing land.</p>
+                            
                         </div>
                     </div>
-
                     <div>
                         <div class="fas fa-chart-line"></div>
                         <div class="services-card-right">
-                            <h3>Investing</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                            <a href="#">Learn More</a>
+                            <h3>City Tours</h3>
+                            <p>If you are visiting The Gambia for the first time we can arrange a city tour with a local guide to see the beauty of The Gambia. Please contact us for more information about pricing.</p>
+                            
                         </div>
                     </div>
-
-                    <div>
-                        <div class="fas fa-building"></div>
-                        <div class="services-card-right">
-                            <h3>List a Property</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                            <a href="#">Learn More</a>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="fas fa-search"></div>
-                        <div class="services-card-right">
-                            <h3>Property Locator</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                            <a href="#">Learn More</a>
-                        </div>
-                    </div>
-
                     <div>
                         <div class="fas fa-mobile-alt"></div>
                         <div class="services-card-right">
-                            <h3>Stated Apps</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                            <a href="#">Learn More</a>
+                            <h3>Phone Consultation</h3>
+                            <p>Book a one on one consultation with Daniel Samba, the director of Investment in The Gambia to gain a better insight on how to move
+                                forward in buying land plots to build your dream home.</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -405,7 +385,7 @@
                             <label for="message">Message</label>
                             <textarea id="message">Write your message here..</textarea>
 
-                            <button class="rounded">Send Message</button>
+                            <button class="rounded" aria-label="Submit Contact Form">Send Message</button>
                         </form>
                     </div>
 
