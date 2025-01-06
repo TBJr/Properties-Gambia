@@ -20,7 +20,8 @@ body {
 }
 
 .container {
-    max-width: 1140px;
+    /*max-width: 3840px; !** 4K UHD resolution *!*/
+    max-width: 1920px; /** FHD(Full High Definition) resolution */
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -73,7 +74,7 @@ p {
 }
 
 button.rounded {
-    background: #f69314;
+    background: linear-gradient(45deg, #f69314, #ff4500);
     border: none;
     color: #fff;
     font-size: 16px;
@@ -106,13 +107,14 @@ header {
 }
 
 #logo {
-    font-family: "Roboto", "Helvetica", "Sans-serif";
-    font-size: 1.7rem;
-    font-weight: 800;
-    color: #fff;
-    text-decoration: none;
-    position: relative;
-    top: 4px;
+    font-family     : "Roboto", "Helvetica", "Sans-serif", serif;
+    font-size       : 1.7rem;
+    font-weight     : 800;
+    color           : #fff;
+    text-decoration : none;
+    position        : relative;
+    /*top             : 4px;*/
+    margin: 0;
 }
 
 .hamburger-menu {
@@ -163,6 +165,13 @@ header ul li a.active {
 header ul.is-sticky li a:hover,
 header ul.is-sticky li a.active {
     color: #f69314;
+}
+
+/* Adjust the spacing between the logo image and logo text */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 /* end: header styles */
 
