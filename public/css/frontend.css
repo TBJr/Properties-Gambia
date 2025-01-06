@@ -564,7 +564,7 @@ header ul.is-sticky li a.active {
     background: #fff;
     padding: 3rem;
     box-sizing: border-box;
-    height: 0%;
+    height: 0;
 }
 
 #form-container h3 {
@@ -581,16 +581,16 @@ header ul.is-sticky li a.active {
 
 #form-container input,
 #form-container textarea {
-    display: block;
-    border-radius: 20px;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    width: 100%;
-    box-sizing: border-box;
-    height: 43px;
-    font-family: "Roboto", "Helvetica", "Sans-serif";
-    font-size: 1rem;
-    color: #495057;
+    display       : block;
+    border-radius : 20px;
+    padding       : 10px;
+    border        : 1px solid #ced4da;
+    width         : 100%;
+    box-sizing    : border-box;
+    height        : 43px;
+    font-family   : "Roboto", "Helvetica", "Sans-serif", serif;
+    font-size     : 1rem;
+    color         : #495057;
 }
 
 #form-container textarea {
@@ -695,16 +695,16 @@ footer .footer-subscribe {
 }
 
 footer .footer-subscribe input {
-    border-radius: 30px;
-    height: 43px;
-    font-family: "Roboto", "Helvetica", "Sans-serif";
-    border: 1px solid #6c757d;
-    background-color: transparent;
-    font-size: 1rem;
-    padding: 10px;
-    color: #fff;
-    box-sizing: border-box;
-    width: 80%;
+    border-radius    : 30px;
+    height           : 43px;
+    font-family      : "Roboto", "Helvetica", "Sans-serif", serif;
+    border           : 1px solid #6c757d;
+    background-color : transparent;
+    font-size        : 1rem;
+    padding          : 10px;
+    color            : #fff;
+    box-sizing       : border-box;
+    width            : 80%;
 }
 
 footer button.right-rounded {
