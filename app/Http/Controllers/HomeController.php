@@ -18,7 +18,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
+        $this->middleware('auth')->except('root');
     }
 
     /**
@@ -36,7 +37,7 @@ class HomeController extends Controller
 
     public function root()
     {
-        return view('index');
+        return view('welcome');
     }
 
     /*Language Translation*/
