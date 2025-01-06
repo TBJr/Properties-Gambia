@@ -19,12 +19,10 @@
             <!-- Navbar Session -->
             <header>
                 <div class="flex container">
-                    <!-- Logo Image -->
-                    <a href="#" class="navbar-brand">
-                        <img src="{{ asset('logoo.ico') }}" width="50" alt="PGRE" class="d-inline-block align-middle mr-2">
+                    <!-- Logo Image and Text -->
+                    <a id="logo" href="{{ route('root') }}" class="navbar-brand">
+                        <img src="{{ asset('logoo.ico') }}" width="50" alt="PGRE" class="d-inline-block align-middle mr-2"> &nbsp; PROPERTIES GAMBIA
                     </a>
-                    <!-- Logo Text -->
-                    <a id="logo" href="{{ route('root') }}">PROPERTIES GAMBIA</a>
                     <nav>
                         <button id="nav-toggle" class="hamburger-menu">
                             <span class="strip"></span>
@@ -468,9 +466,22 @@
             </small>
         </footer>
 
-        <script>
+<script>
+    // Responsive utilities
+    $(document).ready(function() {
+        function handleResponsive() {
+            if ($(window).width() < 768) {
+                $('.flex.container').css({'flex-direction': 'column'});
+            } else {
+                $('.flex.container').css({'flex-direction': 'row'});
+            }
+        }
+        $(window).resize(handleResponsive);
+        handleResponsive();
+    });
             $(function () {
                 let headerElem = $('header');
+                let bodyElem = $('body');
                 let logo = $('#logo');
                 let navMenu = $('#nav-menu');
                 let navToggle = $('#nav-toggle');
@@ -494,6 +505,7 @@
                             settings: {
                                 slidesToShow: 2,
                                 slidesToScroll: 1,
+                                arrows: false,
                                 infinite: true,
                             }
                         },
@@ -525,6 +537,8 @@
                 });
 
                 $(document).on('click', (e) => {
+                    let windowWidth = $(window).width();
+                    if (windowWidth >= 768) return;
                     let target = $(e.target);
                     if (!(target.closest('#nav-toggle').length > 0 || target.closest('#nav-menu').length > 0)) {
                         navMenu.css('right', '-100%');
@@ -532,16 +546,20 @@
                 });
 
                 $(document).scroll(() => {
+                    let windowWidth = $(window).width();
+                    if (windowWidth < 768) return;
                     let scrollTop = $(document).scrollTop();
 
                     if (scrollTop > 0) {
                         navMenu.addClass('is-sticky');
+                        bodyElem.addClass('sticky-header');
                         logo.css('color', '#000');
                         headerElem.css('background', '#fff');
                         navToggle.css('border-color', '#000');
                         navToggle.find('.strip').css('background-color', '#000');
                     } else {
                         navMenu.removeClass('is-sticky');
+                        bodyElem.removeClass('sticky-header');
                         logo.css('color', '#fff');
                         headerElem.css('background', 'transparent');
                         navToggle.css('bordre-color', '#fff');
