@@ -8,7 +8,6 @@
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css"/>
         <link href="<?php echo e(asset('css/frontend.css')); ?>" type="text/css" rel="Stylesheet" />
-        <link href="<?php echo e(asset('css/responsive.css')); ?>" type="text/css" rel="Stylesheet" />
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/95dc93da07.js"></script>
