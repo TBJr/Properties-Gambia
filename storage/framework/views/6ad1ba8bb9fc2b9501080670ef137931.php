@@ -5,9 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title><?php echo e(config('app.client_company_name')); ?></title>
-        <meta name="description" content="Properties Gambia: Helping you procure, invest, and build properties in The Gambia.">
-        <meta property="og:title" content="Properties Gambia" />
-        <meta property="og:description" content="Buy and build your dream property in The Gambia." />
+        <meta name="keywords" content="Properties Gambia, real estate, buy land, invest in Gambia, homes, diaspora" />
+        <meta name="description" content="Discover premium real estate services in The Gambia. Helping you buy, invest, and build your dream property securely." />
+        <meta property="og:title" content="Properties Gambia - Secure Your Dream Property" />
+        <meta property="og:description" content="Providing quality land procurement services to The Gambia and abroad." />
         <meta property="og:image" content="<?php echo e(asset('images/home.jpg')); ?>" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css"/>
@@ -372,18 +373,21 @@
                 <div class="flex">
                     <div id="form-container">
                         <h3>Contact Form</h3>
+
                         <form>
+                            <?php echo csrf_field(); ?>
+
                             <label for="name">Name</label>
-                            <input type="text" id="name" />
+                            <input type="text" id="name" name="name" value="<?php echo e(old('name')); ?>" required/>
 
                             <label for="email">Email</label>
-                            <input type="text" id="email" />
+                            <input type="text" id="email" name="email" value="<?php echo e(old('email')); ?>" required />
 
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" />
+                            <input type="text" id="subject" name="subject" value="<?php echo e(old('subject')); ?>" required />
 
                             <label for="message">Message</label>
-                            <textarea id="message">Write your message here..</textarea>
+                            <textarea id="message" name="message" required><?php echo e(old('message')); ?></textarea>
 
                             <button class="rounded" aria-label="Submit Contact Form">Send Message</button>
                         </form>
@@ -444,19 +448,20 @@
             </small>
         </footer>
 
-<script>
-    // Responsive utilities
-    $(document).ready(function() {
-        function handleResponsive() {
-            if ($(window).width() < 768) {
-                $('.flex.container').css({'flex-direction': 'column'});
-            } else {
-                $('.flex.container').css({'flex-direction': 'row'});
-            }
-        }
-        $(window).resize(handleResponsive);
-        handleResponsive();
-    });
+        <script>
+            // Responsive utilities
+            $(document).ready(function() {
+                function handleResponsive() {
+                    if ($(window).width() < 768) {
+                        $('.flex.container').css({'flex-direction': 'column'});
+                    } else {
+                        $('.flex.container').css({'flex-direction': 'row'});
+                    }
+                }
+                $(window).resize(handleResponsive);
+                handleResponsive();
+            });
+
             $(function () {
                 let headerElem = $('header');
                 let bodyElem = $('body');
