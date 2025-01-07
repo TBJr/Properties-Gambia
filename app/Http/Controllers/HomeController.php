@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactForm;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class HomeController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
-        $this->middleware('auth')->except('root');
+        $this->middleware('auth')->except('root', 'submitContactForm');
     }
 
     /**
@@ -127,4 +128,20 @@ class HomeController extends Controller
             }
         }
     }
+
+    public function submitContactForm(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        // Save the contact form data or send an email
+        ContactForm::create($validated);
+
+        return redirect()->back()->with('success', 'Thank you for reaching out! We will get back to you soon.');
+    }
+
 }

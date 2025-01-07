@@ -373,18 +373,21 @@
                 <div class="flex">
                     <div id="form-container">
                         <h3>Contact Form</h3>
+{{--                        <form action="{{ route('contact.submit') }}" method="POST">--}}
                         <form>
+                            @csrf
+
                             <label for="name">Name</label>
-                            <input type="text" id="name" />
+                            <input type="text" id="name" name="name" value="{{ old('name') }}" required/>
 
                             <label for="email">Email</label>
-                            <input type="text" id="email" />
+                            <input type="text" id="email" name="email" value="{{ old('email') }}" required />
 
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" />
+                            <input type="text" id="subject" name="subject" value="{{ old('subject') }}" required />
 
                             <label for="message">Message</label>
-                            <textarea id="message">Write your message here..</textarea>
+                            <textarea id="message" name="message" required>{{ old('message') }}</textarea>
 
                             <button class="rounded" aria-label="Submit Contact Form">Send Message</button>
                         </form>
@@ -445,19 +448,20 @@
             </small>
         </footer>
 
-<script>
-    // Responsive utilities
-    $(document).ready(function() {
-        function handleResponsive() {
-            if ($(window).width() < 768) {
-                $('.flex.container').css({'flex-direction': 'column'});
-            } else {
-                $('.flex.container').css({'flex-direction': 'row'});
-            }
-        }
-        $(window).resize(handleResponsive);
-        handleResponsive();
-    });
+        <script>
+            // Responsive utilities
+            $(document).ready(function() {
+                function handleResponsive() {
+                    if ($(window).width() < 768) {
+                        $('.flex.container').css({'flex-direction': 'column'});
+                    } else {
+                        $('.flex.container').css({'flex-direction': 'row'});
+                    }
+                }
+                $(window).resize(handleResponsive);
+                handleResponsive();
+            });
+
             $(function () {
                 let headerElem = $('header');
                 let bodyElem = $('body');
